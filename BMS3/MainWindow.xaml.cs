@@ -28,7 +28,11 @@ namespace BMS3
             second_start();
 
             profile = new scheme();
+
+            ini = new ini("bms");
         }
+
+        public ini ini;
 
         private scheme profile;
 
@@ -50,6 +54,7 @@ namespace BMS3
             }
         }
 
+        #region enums and checks
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         public static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
 
@@ -298,11 +303,17 @@ namespace BMS3
         {
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {   
-            scan_area w1 = new scan_area();
+        #endregion
+        
+        private void btn_set_area_Click(object sender, RoutedEventArgs e)
+        {
+            scan_area w1 = new scan_area("baff");
+            w1.Topmost = true;
             w1.Show();
+
+            scan_area w2 = new scan_area("hp");
+            w2.Topmost = true;
+            w2.Show();
         }
     }
 }

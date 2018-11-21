@@ -48,8 +48,10 @@
                 <CheckBox x:Name="chs4" Content="save 4" Margin="{StaticResource ElMargin}" Checked="chs4_Checked" Unchecked="chs4_Unchecked"/>
             </StackPanel>
         </WrapPanel>
-        <Button     
-            Width="150"
-            Grid.Column="1" Grid.Row="2" Content="Настройка области" Click="Button_Click"/>
+        <WrapPanel
+            Grid.Column="1" Grid.Row="2" 
+            HorizontalAlignment="Center" VerticalAlignment="Center">            
+            <Button x:Name="btn_set_area" Width="120" Content="Настройка области" Margin="5,0,5,0" Click="btn_set_area_Click"/>            
+        </WrapPanel>
     </Grid>
 </Window>
