@@ -27,9 +27,10 @@ namespace BMS3
             InitializeComponent();
             second_start();
 
-            profile = new scheme();
+            profile = player.init();
+            change_checks(profile);
 
-            ini = new ini("bms");                        
+            ini = new ini("bms");
         }
 
         public ini ini;
@@ -149,164 +150,184 @@ namespace BMS3
             scan_area_hp = new scan_area("hp");
         }
 
+        private void change_checks(scheme whatdo)
+        {
+            ch1.IsChecked = whatdo.b1; ch2.IsChecked = whatdo.b2; ch3.IsChecked = whatdo.b3; ch4.IsChecked = whatdo.b4;
+            ch1.IsChecked = whatdo.b1; ch1.IsChecked = whatdo.b1; ch1.IsChecked = whatdo.b1; ch1.IsChecked = whatdo.b1;
+            chf.IsChecked = whatdo.bf; chv.IsChecked = whatdo.bv; chz.IsChecked = whatdo.bz; chx.IsChecked = whatdo.bx;
+            chL.IsChecked = whatdo.bL; chP.IsChecked = whatdo.bP; chPW.IsChecked = whatdo.bPW; chSS.IsChecked = whatdo.bSS;
+            chs1.IsChecked = whatdo.bs1; chs2.IsChecked = whatdo.bs2; chs3.IsChecked = whatdo.bs3; chs4.IsChecked = whatdo.bs4;
+            chscan.IsChecked = whatdo.bscan;
+        }
+
+        private void chscan_Checked(object sender, RoutedEventArgs e)
+        {
+            if (player.notinit) profile.bscan = true;
+        }
+
+        private void chscan_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (player.notinit) profile.bscan = false;
+        }
+
         private void ch1_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b1 = true;
         }
 
         private void ch1_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b1 = false;
         }
 
         private void ch2_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b2 = true;
         }
 
         private void ch2_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b2 = false;
         }
 
         private void ch3_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b3 = true;
         }
 
         private void ch3_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b3 = false;
         }
 
         private void ch4_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b4 = true;
         }
 
         private void ch4_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.b4 = false;
         }
 
         private void chf_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bf = true;
         }
 
         private void chf_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bf = false;
         }
 
         private void chv_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bv = true;
         }
 
         private void chv_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bv = false;
         }
 
         private void chz_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bz = true;
         }
 
         private void chz_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bz = false;
         }
 
         private void chx_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bx = true;
         }
 
         private void chx_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bx = false;
         }
 
         private void chL_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bL = true;
         }
 
         private void chL_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bL = false;
         }
 
         private void chP_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bP = true;
         }
 
         private void chP_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bP = false;
         }
 
         private void chPW_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bPW = true;
         }
 
         private void chPW_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bPW = false;
         }
 
         private void chSS_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bSS = true;
         }
 
         private void chSS_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bSS = false;
         }
 
         private void chs1_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs1 = true;
         }
 
         private void chs1_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs1 = false;
         }
 
         private void chs2_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs2 = true;
         }
 
         private void chs2_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs2 = false;
         }
 
         private void chs3_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs3 = true;
         }
 
         private void chs3_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs3 = false;
         }
 
         private void chs4_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs4 = true;
         }
 
         private void chs4_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            if (player.notinit) profile.bs4 = false;
         }
         #endregion
 

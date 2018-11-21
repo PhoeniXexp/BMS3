@@ -24,5 +24,6 @@ namespace BMS3
         public bool bP { get; set; } = false;
         public bool bPW { get; set; } = false;
         public bool bSS { get; set; } = true;
+        public bool bscan { get; set; } = true;
     }
 }

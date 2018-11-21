@@ -8,14 +8,15 @@ namespace BMS3
 {
     class player
     {
-        private static scheme sch1;
+        public static bool notinit = true;
+        private static scheme sch1 = new scheme();
         public scheme clear()
         {
             clr();
             return sch1;
         }
 
-        private void clr()
+        private static void clr()
         {
             sch1.b1= false; sch1.b2 = false; sch1.b3 = false; sch1.b4 = false;
             sch1.bs1 = false; sch1.bs2 = false; sch1.bs3 = false; sch1.bs4 = false;
@@ -24,69 +25,73 @@ namespace BMS3
             sch1.bSS = true;
         }
 
-        public scheme init()
+        public static scheme init()
         {
+            notinit = false;
+
             clr();
             sch1.bP = true;
             sch1.bPW = true;
+
+            notinit = true;
             return sch1;
         }
 
-        public scheme SIN()
+        public static scheme SIN()
         {
             init();
             return sch1;
         }
 
-        public scheme FM()
+        public static scheme FM()
         {
             init();
             return sch1;
         }
 
-        public scheme WL()
+        public static scheme WL()
         {
             init();
             return sch1;
         }
 
-        public scheme GUN()
+        public static scheme GUN()
         {
             init();
             return sch1;
         }
 
-        public scheme KOT()
+        public static scheme KOT()
         {
             return sch1;
         }
 
-        public scheme CI()
+        public static scheme CI()
         {
             return sch1;
         }
 
-        public scheme DST()
+        public static scheme DST()
         {
             return sch1;
         }
 
-        public scheme BM()
+        public static scheme BM()
         {
             return sch1;
         }
 
-        public scheme WAR()
+        public static scheme WAR()
         {
             return sch1;
         }
 
-        public scheme KFM()
+        public static scheme KFM()
         {
             return sch1;
         }
 
-        public scheme LSM()
+        public static scheme LSM()
         {
             return sch1;
         }
