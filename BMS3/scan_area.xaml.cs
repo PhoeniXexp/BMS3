@@ -24,11 +24,17 @@ namespace BMS3
             _name = name;
             InitializeComponent();
 
+            this.Topmost = true;
+
             if (name == "hp") area_form.Background = new SolidColorBrush(Color.FromRgb(255, 0, 116));
-            
+
+            this.IsVisibleChanged += Scan_area_IsVisibleChanged;
+        }
+
+        private void Scan_area_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
             bool b = ini.iswindow(_name);
             if (b) ini.getparam(_name, ref lu, ref X, ref Y);
-
             set_location(b);
         }
 
@@ -60,7 +66,7 @@ namespace BMS3
             lu = new Point(this.Left, this.Top);
 
             ini.setparam(_name, lu, X, Y);
-            this.Close();
+            this.Hide();
         }
     }
 }

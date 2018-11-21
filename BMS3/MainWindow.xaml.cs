@@ -29,12 +29,15 @@ namespace BMS3
 
             profile = new scheme();
 
-            ini = new ini("bms");
+            ini = new ini("bms");                        
         }
 
         public ini ini;
 
         private scheme profile;
+
+        private scan_area scan_area_baff;
+        private scan_area scan_area_hp;
 
         private void second_start()
         {
@@ -136,12 +139,14 @@ namespace BMS3
 
         private void main_form_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            scan_area_baff.Close();
+            scan_area_hp.Close();
         }
 
         private void main_form_Loaded(object sender, RoutedEventArgs e)
         {
-
+            scan_area_baff = new scan_area("baff");
+            scan_area_hp = new scan_area("hp");
         }
 
         private void ch1_Checked(object sender, RoutedEventArgs e)
@@ -304,16 +309,23 @@ namespace BMS3
 
         }
         #endregion
-        
+
+        private bool area_settings_open = false;
+
         private void btn_set_area_Click(object sender, RoutedEventArgs e)
         {
-            scan_area w1 = new scan_area("baff");
-            w1.Topmost = true;
-            w1.Show();
-
-            scan_area w2 = new scan_area("hp");
-            w2.Topmost = true;
-            w2.Show();
+            if (area_settings_open)
+            {
+                scan_area_baff.Hide();
+                scan_area_hp.Hide();
+                area_settings_open = false;
+            }
+            else
+            {
+                scan_area_baff.Show();
+                scan_area_hp.Show();
+                area_settings_open = true;
+            }
         }
     }
 }
