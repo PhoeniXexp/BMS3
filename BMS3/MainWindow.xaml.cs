@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BMS3
 {
@@ -37,8 +40,10 @@ namespace BMS3
 
         private scheme profile;
 
-        private scan_area scan_area_baff;
-        private scan_area scan_area_hp;
+        private static scan_area scan_area_baff;
+        private static scan_area scan_area_hp;
+
+        public bool activator = false;        
 
         private void second_start()
         {
@@ -347,6 +352,56 @@ namespace BMS3
                 scan_area_hp.Show();
                 area_settings_open = true;
             }
+        }
+
+        
+
+        private void btn_activator_Click(object sender, RoutedEventArgs e)
+        {
+            if (activator)
+            {
+                activator = false;
+                btn_activator.Content = "Start";                
+            }
+            else
+            {
+                activator = true;
+                btn_activator.Content = "Stop";
+                
+                new Thread(qwer).Start();                            
+            }
+        }
+
+        private void qwer()
+        {
+            string pic = "pics/sb.png";
+            if (!File.Exists("pics/sb.png")) return;
+            int x = scan_area_baff.X;
+            int y = scan_area_baff.Y;
+            Point lu = scan_area_baff.lu;
+
+            bool b = true;
+            
+            while (b)
+            {
+                if (!activator) b = false;
+                var q = match.find(lu, x, y, pic);
+                ini.setskill("death", q);
+                Dispatcher.Invoke(() =>
+                {
+                    label.Content = q;
+                    if (q > 0.99)
+                    {
+                        ch4.IsChecked = true;
+                    }
+                    else
+                    {
+                        ch4.IsChecked = false;
+                    }
+                });     
+                Thread.Sleep(1000);
+            }
+            ini.save();
         }
     }
 }

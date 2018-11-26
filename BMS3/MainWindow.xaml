@@ -51,12 +51,14 @@
             </WrapPanel>
             <WrapPanel>
                 <CheckBox x:Name="chscan" Content="scan" Margin="{StaticResource ElMargin}" Checked="chscan_Checked" Unchecked="chscan_Unchecked"/>
-            </WrapPanel>
+                <Button x:Name="btn_activator" Content="Start" Width="75" Click="btn_activator_Click"/>
+                <Label x:Name="label"/>
+            </WrapPanel>            
         </WrapPanel>
         <WrapPanel
             Grid.Column="1" Grid.Row="2" 
             HorizontalAlignment="Center" VerticalAlignment="Center">            
-            <Button x:Name="btn_set_area" Width="120" Content="Настройка области" Margin="5,0,5,0" Click="btn_set_area_Click"/>            
+            <Button x:Name="btn_set_area" Width="120" Content="Настройка области" Margin="5,0,5,0" Click="btn_set_area_Click"/>                  
         </WrapPanel>
     </Grid>
 </Window>

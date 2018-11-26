@@ -28,6 +28,7 @@ namespace BMS3
 
             if (name == "hp") area_form.Background = new SolidColorBrush(Color.FromRgb(255, 0, 116));
 
+            Scan_area_IsVisibleChanged(null, new DependencyPropertyChangedEventArgs());
             this.IsVisibleChanged += Scan_area_IsVisibleChanged;
         }
 
