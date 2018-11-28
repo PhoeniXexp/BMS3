@@ -20,6 +20,5 @@ namespace BMS3
         public static string LSM = "LSM";
         public static string KOT = "KOT";
 
-        public static Dictionary<>
     }
 }

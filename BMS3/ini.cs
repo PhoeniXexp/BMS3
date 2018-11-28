@@ -16,6 +16,7 @@ namespace BMS3
         private static XmlNode skills;
         private static XmlNodeList windows_list;
         private static XmlNodeList skills_list;
+        private static int multi = 100000;
         
         /// <summary>
         /// settings in ini file
@@ -59,6 +60,9 @@ namespace BMS3
 
             XmlAttribute attribute = doc.CreateAttribute("d");
             attribute.Value = "0";
+            skill.Attributes.Append(attribute);
+            attribute = doc.CreateAttribute("s");
+            attribute.Value = (0.99 * multi).ToString();
             skill.Attributes.Append(attribute);
             skill.InnerText = "death";
             skills.AppendChild(skill);
@@ -145,7 +149,7 @@ namespace BMS3
                     try
                     {
                         if (getskill(name) < d)
-                            skill.Attributes["d"].Value = Math.Round(d * 100000).ToString();
+                            skill.Attributes["d"].Value = Math.Round(d * multi).ToString();
                     }
                     catch { }
                 }
@@ -169,7 +173,33 @@ namespace BMS3
                     try
                     {
                         var tmp = skill.Attributes["d"].Value;
-                        ret = Convert.ToDouble(tmp) / 100000;
+                        ret = Convert.ToDouble(tmp) / multi;
+                        return ret;
+                    }
+                    catch { }
+                }
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// get number for script start
+        /// </summary>
+        /// <param name="name">Skill's name</param>
+        /// <returns></returns>
+        public static double getskill_s(string name)
+        {
+            double ret = 0;
+            if (!isskill(name)) return ret;
+
+            foreach (XmlNode skill in skills_list)
+            {
+                if (skill.InnerText == name)
+                {
+                    try
+                    {
+                        var tmp = skill.Attributes["s"].Value;
+                        ret = Convert.ToDouble(tmp) / multi;
                         return ret;
                     }
                     catch { }

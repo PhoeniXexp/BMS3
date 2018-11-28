@@ -25,9 +25,19 @@ namespace BMS3
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static void AppDomain_CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {            
+            
+            Application.Current.Shutdown();
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            AppDomain.CurrentDomain.UnhandledException +=
+new UnhandledExceptionEventHandler(AppDomain_CurrentDomain_UnhandledException);
+
             second_start();
 
             profile = player.init();
@@ -38,7 +48,7 @@ namespace BMS3
 
         public ini ini;
 
-        private scheme profile;
+        public scheme profile;
 
         private static scan_area scan_area_baff;
         private static scan_area scan_area_hp;
@@ -353,8 +363,6 @@ namespace BMS3
                 area_settings_open = true;
             }
         }
-
-        
 
         private void btn_activator_Click(object sender, RoutedEventArgs e)
         {
